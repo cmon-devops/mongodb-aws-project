@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  deploy:
+  provision:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,17 +21,23 @@ jobs:
 
       - name: Provision EC2 instance
         run: |
-          bash ec2_mongodb_setup.sh
+          bash ../ec2_mongodb_setup.sh  # Update path if necessary
 
       - name: Wait for EC2 instance to be ready
-        run: sleep 60  # You can replace this with a better waiting strategy if needed
 
       - name: Get Public DNS of EC2 instance
         id: get_dns
         run: |
           DNS=$(cat ec2_dns.txt)
           echo "EC2 Public DNS: $DNS"
-          echo "::set-output name=ec2_dns::$DNS"
+          echo "ec2_dns=$DNS" >> $GITHUB_ENV  # Store in environment variable
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Install Python dependencies
         run: |
@@ -40,5 +45,5 @@ jobs:
 
       - name: Run Python app to connect to MongoDB
         run: |
-          # Use the Public DNS from the previous step
-          python mongodb-app/app.py --ec2-dns "${{ steps.get_dns.outputs.ec2_dns }}"
+          # Use the Public DNS from the environment variable
+          python mongodb-app/app.py --ec2-dns "${{ env.ec2_dns }}"
