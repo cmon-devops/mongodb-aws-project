@@ -1,18 +1,11 @@
-from pymongo import MongoClient
+import argparse
 
-# Use the EC2 public DNS in the connection string
-client = MongoClient("mongodb://<ec2-public-dns>:27017/")
+def main(ec2_dns):
+    # Your connection logic here
+    print(f"Connecting to MongoDB on EC2 instance at {ec2_dns}")
 
-# Create or switch to a database
-db = client["mydatabase"]
-
-# Create or switch to a collection
-collection = db["mycollection"]
-
-# Insert a document
-data = {"name": "AWS MongoDB", "description": "Connected to MongoDB from EC2"}
-collection.insert_one(data)
-
-# Fetch the document
-document = collection.find_one({"name": "AWS MongoDB"})
-print("Document:", document)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Connect to MongoDB on EC2')
+    parser.add_argument('--ec2-dns', required=True, help='Public DNS of the EC2 instance')
+    args = parser.parse_args()
+    main(args.ec2_dns)
