@@ -30,7 +30,7 @@ jobs:
       - name: Get Public DNS of EC2 instance
         id: get_dns
         run: |
-          DNS=$(cat ../ec2_dns.txt)
+          DNS=$(cat ec2_dns.txt)
           echo "EC2 Public DNS: $DNS"
           echo "ec2_dns=$DNS" >> $GITHUB_ENV
 
