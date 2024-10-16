@@ -22,7 +22,7 @@ jobs:
 
       - name: Provision EC2 instance
         run: |
-          bash aws-cli-setup/ec2_provision.sh
+          bash aws-cli-setup/create_ec2.sh
 
       - name: Wait for EC2 instance to be ready
         run: sleep 60
