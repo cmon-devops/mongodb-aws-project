@@ -4,7 +4,7 @@
 KEY_PATH="secret.pem"  # Path to your key pair
 INSTANCE_TYPE="t2.micro"          # Specify the instance type
 AMI_ID="ami-011e48799a29115e9"    # Specify the AMI ID (Ubuntu 20.04 in this case)
-SECURITY_GROUP="my-sg"  # Replace with your security group ID
+SECURITY_GROUP="sg-020703650cac4139d"  # Replace with your security group ID
 
 # Ensure the key has the correct permissions
 if [ -f "$KEY_PATH" ]; then
