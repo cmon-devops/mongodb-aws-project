@@ -1,9 +1,9 @@
 #!/bin/bash
 # Script to create an EC2 instance using AWS CLI
 
-AMI_ID="ami-0abcdef1234567890"  # Change this to your preferred AMI ID (Ubuntu 20.04)
+AMI_ID="ami-00541bdde421799c7"
 INSTANCE_TYPE="t2.micro"
-KEY_NAME="my-ec2-keypair"  # Ensure you have a key pair created
+KEY_NAME="my-ec2-keypair"
 SECURITY_GROUP="my-sg"
 
 # Create a Security Group that allows SSH and MongoDB access (port 27017)
