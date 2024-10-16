@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Variables
+pwd
 KEY_PATH="secret.pem"  # Path to your key pair
 INSTANCE_TYPE="t2.micro"          # Specify the instance type
 AMI_ID="ami-011e48799a29115e9"    # Specify the AMI ID (Ubuntu 20.04 in this case)
