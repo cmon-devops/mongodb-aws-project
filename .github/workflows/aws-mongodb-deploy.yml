@@ -21,17 +21,17 @@ jobs:
 
       - name: Provision EC2 instance
         run: |
-          bash aws-cli-setup/ec2_mongodb_setup.sh  # Ensure this path is correct
+          bash ec2_mongodb_setup.sh  # Ensure this path is correct
 
       - name: Wait for EC2 instance to be ready
-        run: sleep 60  # Consider replacing with a more robust waiting strategy
+        run: sleep 30
 
       - name: Get Public DNS of EC2 instance
         id: get_dns
         run: |
-          DNS=$(cat aws-cli-setup/ec2_dns.txt)  # Ensure this path is correct
+          DNS=$(cat ../ec2_dns.txt)
           echo "EC2 Public DNS: $DNS"
-          echo "ec2_dns=$DNS" >> $GITHUB_ENV  # Store in environment variable
+          echo "ec2_dns=$DNS" >> $GITHUB_ENV
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,5 +46,4 @@ jobs:
 
       - name: Run Python app to connect to MongoDB
         run: |
-          # Use the Public DNS from the environment variable
           python mongodb-app/app.py --ec2-dns "${{ env.ec2_dns }}"
