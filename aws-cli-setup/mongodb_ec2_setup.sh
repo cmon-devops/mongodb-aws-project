@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script to SSH into EC2 and install MongoDB
 
-PUBLIC_DNS=ec2-107-22-52-187.compute-1.amazonaws.com
+PUBLIC_DNS=ec2-35-173-216-244.compute-1.amazonaws.com
 KEY_PATH="./secret.pem"
 chmod 400 $KEY_PATH
 
