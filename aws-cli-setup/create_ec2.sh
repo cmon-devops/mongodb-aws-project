@@ -29,9 +29,8 @@ echo "Instance created with ID: $INSTANCE_ID"
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 
 # Get public DNS of the instance
-PUBLIC_DNS=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicDnsName' --output text)
+PUBLIC_DNS=ec2-107-22-52-187.compute-1.amazonaws.com
 
 echo "Instance Public DNS: $PUBLIC_DNS"
 
 echo "EC2 instance created. Now run the 'mongodb_ec2_setup.sh' script to configure MongoDB on the instance."
-
