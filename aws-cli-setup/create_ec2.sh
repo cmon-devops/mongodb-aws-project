@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script to create an EC2 instance using AWS CLI
 
-AMI_ID="ami-00541bdde421799c7"
+AMI_ID="ami-011e48799a29115e9"
 INSTANCE_TYPE="t2.micro"
 KEY_NAME="my-ec2-keypair"
 SECURITY_GROUP="my-sg"
