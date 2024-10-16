@@ -21,14 +21,15 @@ jobs:
 
       - name: Provision EC2 instance
         run: |
-          bash ../ec2_mongodb_setup.sh  # Update path if necessary
+          bash aws-cli-setup/ec2_mongodb_setup.sh  # Ensure this path is correct
 
       - name: Wait for EC2 instance to be ready
+        run: sleep 60  # Consider replacing with a more robust waiting strategy
 
       - name: Get Public DNS of EC2 instance
         id: get_dns
         run: |
-          DNS=$(cat ec2_dns.txt)
+          DNS=$(cat aws-cli-setup/ec2_dns.txt)  # Ensure this path is correct
           echo "EC2 Public DNS: $DNS"
           echo "ec2_dns=$DNS" >> $GITHUB_ENV  # Store in environment variable
 
