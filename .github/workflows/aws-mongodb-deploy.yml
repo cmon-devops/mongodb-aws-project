@@ -21,6 +21,7 @@ jobs:
 
       - name: Provision EC2 instance
         run: |
+          pwd
           bash ec2_mongodb_setup.sh  # Ensure this path is correct
 
       - name: Wait for EC2 instance to be ready
