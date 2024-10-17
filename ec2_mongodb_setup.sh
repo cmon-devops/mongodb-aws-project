@@ -4,7 +4,7 @@
 pwd
 KEY_PATH="secret.pem"  # Path to your key pair
 INSTANCE_TYPE="t2.micro"          # Specify the instance type
-AMI_ID="ami-011e48799a29115e9"    # Specify the AMI ID (Ubuntu 20.04 in this case)
+AMI_ID="ami-03e41c3d2c3674df1"    # Specify the AMI ID (Ubuntu 20.04 in this case)
 SECURITY_GROUP="sg-020703650cac4139d"  # Replace with your security group ID
 
 # Ensure the key has the correct permissions
