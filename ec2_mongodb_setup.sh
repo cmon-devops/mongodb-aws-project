@@ -17,6 +17,7 @@ fi
 
 # Create EC2 instance and capture the Public DNS
 INSTANCE_INFO=$(aws ec2 run-instances --image-id $AMI_ID --count 1 --instance-type $INSTANCE_TYPE --key-name "my-ec2-keypair" --security-group-ids $SECURITY_GROUP --query "Instances[0].[PublicDnsName]" --output text)
+echo "Instance : $INSTANCE_INFO"
 
 if [ -z "$INSTANCE_INFO" ]; then
     echo "Failed to create EC2 instance."
